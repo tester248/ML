@@ -5,6 +5,7 @@ Machine learning practicals implemented in Jupyter Notebook.
 | Prac | Topic | Notebook |
 | --- | --- | --- |
 | 1 | Feature Transformation using LDA | [`prac1/prac1LDA.ipynb`](prac1/prac1LDA.ipynb) |
+| 1A | PCA for Dimensionality Reduction | [`prac1a/prac1aPCA.ipynb`](prac1a/prac1aPCA.ipynb) |
 | 2 | Regression Analysis (Linear, Ridge, Lasso) | [`prac2/prac2.ipynb`](prac2/prac2.ipynb) |
 
 ## Setup
@@ -35,6 +36,22 @@ flower by species.
 
 Setup follows the principle that the train/test split is done *before* scaling, so
 the test set never leaks into the scaler's statistics.
+
+## Prac 1A — PCA on the wine dataset
+
+Compresses 13 chemical measurements of wine into a small number of principal
+components that retain most of the variation, so the customer segments become
+visually separable.
+
+- **Source:** [GeeksforGeeks — Wine.csv](https://media.geeksforgeeks.org/wp-content/uploads/Wine.csv) (178 samples, 13 features, 3 segments)
+- **Scaling:** applied before fitting PCA. `Proline` (~1000) and `Magnesium` (~100) dwarf `pH` (~3), so unscaled PCA would make PC1 almost purely a magnitude axis rather than a chemical one.
+- **Variance:** PC1 36.2%, PC2 19.2% → **2 components hold 55.4%**. Reaching 95% needs 10 of 13.
+- **Separability:** segments separate cleanly along PC1, which is dominated by phenolic and colour compounds — Flavanoids (0.423), Total_Phenols (0.395), OD280 (0.376), Proanthocyanins (0.313).
+- **Accuracy check:** logistic regression scores **0.9167** on 2 components against **0.9722** on all 13, so discarding 11 dimensions costs about 5.5 points of accuracy.
+
+> The brief describes separating *red* from *white* wine, but the linked dataset
+> labels three grape cultivars as `Customer_Segment` 1-3 rather than wine colour.
+> The PCA method is unaffected — the label is only used to colour the plots.
 
 ## Prac 2 — Uber fare regression
 
@@ -73,7 +90,7 @@ jupyter nbconvert --to html prac1/prac1LDA.ipynb
 ```
 
 Then open the HTML, press `Ctrl+P`, choose **Save as PDF**, paper size **A4**,
-and enable **Background graphics**.
+and enable **Background graphics**. The committed PDFs were produced this way.
 
 Keep source lines under ~85 characters — nbconvert does not wrap long lines, so
 anything wider than the page is clipped rather than wrapped.
