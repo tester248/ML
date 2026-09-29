@@ -1,0 +1,21 @@
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Python bytecode / cache
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# HTML exports - regenerable with: jupyter nbconvert --to html <notebook>
+*.html
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
