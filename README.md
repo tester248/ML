@@ -80,6 +80,55 @@ regression models.
 > and Lasso land so close to plain Linear Regression: with no multicollinearity
 > present, the penalty term has almost nothing to correct.
 
+## Prac 3 — SVM handwritten-digit classification
+
+Classifies handwritten digits from 0 to 9 using linear and RBF-kernel Support
+Vector Machines. The notebook includes training-only feature scaling, a
+stratified 70/30 train/test split, RBF hyperparameter tuning with three-fold
+cross-validation, accuracy and classification metrics, a confusion matrix, and
+prediction visualizations.
+
+- **Source:** scikit-learn's built-in `load_digits` dataset (1,797 samples,
+  8×8 images, 64 pixel features, 10 classes)
+- **Why this source:** it keeps the practical self-contained and avoids
+  downloading a large external CSV. The assignment's Kaggle MNIST variant uses
+  28×28 images and 784 features; the SVM workflow is otherwise the same.
+- **Notebook:** [`prac3/prac3.ipynb`](prac3/prac3.ipynb)
+
+Run it with the repository virtual environment:
+
+```bash
+.venv\Scripts\activate
+jupyter notebook prac3/prac3.ipynb
+```
+
+## Prac 4 — K-Means clustering
+
+Applies K-Means clustering to the Iris dataset. The notebook standardizes the
+four measurements, uses the elbow method to select three clusters, visualizes
+the clusters with PCA, and reports silhouette score and adjusted Rand index.
+
+- **Source:** [`prac1/Iris.csv`](prac1/Iris.csv)
+- **Notebook:** [`prac4/prac4.ipynb`](prac4/prac4.ipynb)
+
+## Prac 5 — Random Forest car-safety classification
+
+Predicts car-evaluation categories using a Random Forest classifier. The
+categorical inputs are one-hot encoded, then evaluated with accuracy,
+classification metrics, a confusion matrix, and feature importances.
+
+- **Source:** [`prac5/car.data`](prac5/car.data), from the UCI Car Evaluation
+  dataset linked in the assignment
+- **Notebook:** [`prac5/prac5.ipynb`](prac5/prac5.ipynb)
+
+## Prac 6 — Tic-Tac-Toe reinforcement learning
+
+Builds a Tic-Tac-Toe environment and trains a Q-learning agent against a random
+opponent. The notebook covers environment setup, game logic, Q-table updates,
+training progress, testing, and a sample game.
+
+- **Notebook:** [`prac6/prac6.ipynb`](prac6/prac6.ipynb)
+
 ## Exporting to PDF
 
 Neither notebook renders directly to PDF because LaTeX is not installed. The
